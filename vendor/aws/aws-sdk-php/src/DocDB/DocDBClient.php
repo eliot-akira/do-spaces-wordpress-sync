@@ -2,6 +2,7 @@
 namespace Aws\DocDB;
 
 use Aws\AwsClient;
+use Aws\PresignUrlMiddleware;
 
 /**
  * This client is used to interact with the **Amazon DocumentDB with MongoDB compatibility** service.
@@ -33,6 +34,8 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise deleteDBInstanceAsync(array $args = [])
  * @method \Aws\Result deleteDBSubnetGroup(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteDBSubnetGroupAsync(array $args = [])
+ * @method \Aws\Result describeCertificates(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeCertificatesAsync(array $args = [])
  * @method \Aws\Result describeDBClusterParameterGroups(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeDBClusterParameterGroupsAsync(array $args = [])
  * @method \Aws\Result describeDBClusterParameters(array $args = [])
@@ -88,4 +91,31 @@ use Aws\AwsClient;
  * @method \Aws\Result stopDBCluster(array $args = [])
  * @method \GuzzleHttp\Promise\Promise stopDBClusterAsync(array $args = [])
  */
-class DocDBClient extends AwsClient {}
+class DocDBClient extends AwsClient {
+    public function __construct(array $args)
+    {
+        $args['with_resolved'] = function (array $args) {
+            $this->getHandlerList()->appendInit(
+                PresignUrlMiddleware::wrap(
+                    $this,
+                    $args['endpoint_provider'],
+                    [
+                        'operations' => [
+                            'CopyDBClusterSnapshot',
+                            'CreateDBCluster',
+                        ],
+                        'service' => 'rds',
+                        'presign_param' => 'PreSignedUrl',
+                        'require_different_region' => true,
+                        'extra_query_params' => [
+                            'CopyDBClusterSnapshot' => ['DestinationRegion'],
+                            'CreateDBCluster' => ['DestinationRegion'],
+                        ]
+                    ]
+                ),
+                'rds.presigner'
+            );
+        };
+        parent::__construct($args);
+    }
+}
