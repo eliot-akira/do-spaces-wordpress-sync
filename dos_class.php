@@ -75,7 +75,7 @@ class DOS {
   private function register_filters () {
 
     add_filter('wp_generate_attachment_metadata', array($this, 'filter_wp_generate_attachment_metadata'), 20, 1);
-    // add_filter('wp_save_image_editor_file', array($this,'filter_wp_save_image_editor_file'), 10, 5 );
+    add_filter('wp_save_image_editor_file', array($this,'filter_wp_save_image_editor_file'), 10, 5 );
     add_filter('wp_unique_filename', array($this, 'filter_wp_unique_filename') );
     
   }
@@ -171,6 +171,12 @@ class DOS {
 
     return $metadata;
 
+  }
+
+  public function filter_wp_save_image_editor_file($override, $filename, $image, $mime_type, $post_id) {
+    $to_return = $image->save($filename, $mime_type);
+    $this->file_upload($filename);
+    return $to_return;
   }
 
   public function filter_wp_unique_filename ($filename) {
