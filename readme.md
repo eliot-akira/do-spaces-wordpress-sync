@@ -1,6 +1,19 @@
 ## DigitalOcean Spaces Sync
 This WordPress plugin syncs your media library with [DigitalOcean Spaces](https://goo.gl/SX2UwH) Container.
 
+---
+
+This fork will attempt to solve:
+
+- [ ] Merge pull request #48: [Update dependencies](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/pull/48)
+- [ ] Merge pull request #43: [Ability to edit files in WP and get files saved to DO Spaces](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/pull/43)
+- [ ] [Do upload in different thread](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/issues/6)
+
+Maybe:
+
+- [Add option to avoid non-media files being moved](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/issues/45)
+- [Select files from Space instead of uploading through Media Library](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/issues/38)
+
 ### Description
 This WordPress plugin syncs your media library with [DigitalOcean Spaces](https://goo.gl/SX2UwH) Container. It allows you to simuntanously upload and delete files, replacing public media URL with relative cloud storage links. You can choose between two options, to keep local copy of the files, or to delete them and keep files only in cloud storage.
 
