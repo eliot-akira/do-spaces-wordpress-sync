@@ -5,8 +5,8 @@ This WordPress plugin syncs your media library with [DigitalOcean Spaces](https:
 
 This fork will attempt to solve:
 
-- [ ] Merge pull request #48: [Update dependencies](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/pull/48)
-- [ ] Merge pull request #43: [Ability to edit files in WP and get files saved to DO Spaces](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/pull/43)
+- [x] Merge pull request #48: [Update dependencies](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/pull/48)
+- [x] Merge pull request #43: [Ability to edit files in WP and get files saved to DO Spaces](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/pull/43)
 - [ ] [Do upload in different thread](https://github.com/bitkidd/DigitalOcean-Spaces-Sync/issues/6)
 
 Maybe:
