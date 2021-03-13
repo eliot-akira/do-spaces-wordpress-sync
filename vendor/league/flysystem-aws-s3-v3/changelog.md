@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.0.29 - 2020-10-08
+
+* copies now switch to multipart copy for large files.
+
+## 1.0.28 - 2020-08-22
+
+* __Allow streamed read by default.__<br/>
+  This change prevents the stream from being seekable (func
+  calls like rewind have no effect). Need to seek through the stream?
+  Check out the docs to see how to disable streaming read: https://flysystem.thephpleague.com/v1/docs/adapter/aws-s3-v3/#streamed-reads 
+
+## 1.0.27 - 2020-08-22
+
+* Revert always streaming reads (degraded functionality).
+
+## 1.0.26 - 2020-08-18
+
+* Always stream reads (#211)
+
+## 1.0.25 - 2020-06-02
+
+* Use `S3Client::encodeKey` for key encoding.
+
+## 1.0.24 - 2020-02-23
+
+* Depend on S3ClientInterface rather than the concrete client.
+
 ## 1.0.23 - 2019-06-05
 
 * Prevent content type detection for directory creation.

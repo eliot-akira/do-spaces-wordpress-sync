@@ -1,5 +1,5 @@
 {
-  "name": "keeross/DO-Spaces-Wordpress-Sync",
+  "name": "keeross/do-spaces-wordpress-sync",
   "type": "plugin",
   "description": "This WordPress plugin syncs your media library with DigitalOcean Spaces Container.",
   "keywords": [
